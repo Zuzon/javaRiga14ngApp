@@ -1,0 +1,13 @@
+:host {
+    height: 80px;
+}
+.menu {
+    .item {
+        display: inline-block;
+        width: 200px;
+        text-align: center;
+        &:hover {
+            font-weight: bold;
+        }
+    }
+}

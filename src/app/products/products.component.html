@@ -1,0 +1,15 @@
+<h2>{{pageTitle}}</h2>
+<div class="products">
+    <div class="product-item" [class.sale]="item.discount > 0" *ngFor="let item of products">
+        <div class="name">{{item.name}}</div>
+        <div *ngIf="item.discount === 0" class="price">{{item.price}}</div>
+        <div *ngIf="item.discount > 0" class="price">
+            <span class="old">{{item.price}}</span>
+            <span class="discount">&nbsp;-{{item.discount*100}}%</span>
+            <span class="actualPrice">&nbsp;{{item.price - item.price * item.discount}}</span>
+        </div>
+        <div class="buy">
+            <button>Add to cart</button>
+        </div>
+    </div>
+</div>
