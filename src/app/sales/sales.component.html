@@ -1,1 +1,4 @@
-<p>sales works!</p>
+<h2>Sales!!!</h2>
+<app-product-item 
+    [class.sale]="prece.discount > 0"
+    [item]="prece" *ngFor="let prece of service.getDiscountedProducts()"></app-product-item>

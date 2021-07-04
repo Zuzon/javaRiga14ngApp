@@ -8,6 +8,8 @@ import { SalesComponent } from './sales/sales.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
+import { ProductItemComponent } from './product-item/product-item.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,10 +18,12 @@ import { RouterModule } from '@angular/router';
     ProductsComponent,
     SalesComponent,
     ContactsComponent,
-    FooterComponent
+    FooterComponent,
+    ProductItemComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     RouterModule.forRoot([
       {
         path: '',

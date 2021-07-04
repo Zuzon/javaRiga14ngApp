@@ -2,4 +2,36 @@
     <a class="item" routerLink="">Produkti</a>
     <a class="item" routerLink="akcijas">Akcijas</a>
     <a class="item" [routerLink]="['contacts']">Kontakti</a>
+    <div class="cart-indicator">
+        you have {{service.cartItems.length}} unique items in cart
+        <button *ngIf="service.cartItems.length > 0" (click)="cartVisible = !cartVisible">Show cart</button>
+    </div>
+    <div *ngIf="cartVisible" class="cart">
+        <table>
+            <thead>
+                <tr>
+                    <th>Product name</th>
+                    <th>Amount</th>
+                    <th>Price</th>
+                    <th>Discount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cartItem of service.cartItems">
+                    <td>{{cartItem.product.name}}</td>
+                    <td><input type="text" [(ngModel)]="cartItem.amount" /></td>
+                    <td>{{cartItem.product.price * cartItem.amount | number: '1.0-2'}}</td>
+                    <td>{{cartItem.product.price * cartItem.product.discount * cartItem.amount | number: '1.0-2'}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Total without discount</td>
+                    <td colspan="2">{{service.getTotalWithoutDiscount() | number: '1.0-2'}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><b>Total</b></td>
+                    <td colspan="2"><b>{{service.getTotal() | number: '1.0-2'}}</b></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
