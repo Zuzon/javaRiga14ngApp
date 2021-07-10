@@ -2,6 +2,7 @@
     <a class="item" routerLink="">Produkti</a>
     <a class="item" routerLink="akcijas">Akcijas</a>
     <a class="item" [routerLink]="['contacts']">Kontakti</a>
+    <a class="item" [routerLink]="['addproduct']">Add product</a>
     <div class="cart-indicator">
         you have {{service.cartItems.length}} unique items in cart
         <button *ngIf="service.cartItems.length > 0" (click)="cartVisible = !cartVisible">Show cart</button>

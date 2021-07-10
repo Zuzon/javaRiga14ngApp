@@ -9,7 +9,8 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { ProductItemComponent } from './product-item/product-item.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddProductComponent } from './add-product/add-product.component';
 
 @NgModule({
   declarations: [
@@ -19,11 +20,13 @@ import { FormsModule } from '@angular/forms';
     SalesComponent,
     ContactsComponent,
     FooterComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       {
         path: '',
@@ -36,6 +39,10 @@ import { FormsModule } from '@angular/forms';
       {
         path: 'contacts',
         component: ContactsComponent
+      },
+      {
+        path: 'addproduct',
+        component: AddProductComponent
       }
     ])
   ],
