@@ -2,3 +2,15 @@ label {
     width: 150px;
     display: inline-block;
 }
+
+.validationError {
+    color: red;
+    margin-left: 10px;
+}
+
+.success {
+    margin: 10px;
+    padding: 15px;
+    background-color: rgb(113, 156, 26);
+    color: white;
+}
