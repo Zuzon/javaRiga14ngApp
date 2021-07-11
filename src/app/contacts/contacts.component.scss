@@ -1,0 +1,15 @@
+.work {
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    margin: 30px;
+    &.inprogress {
+        background-color: yellow;
+    }
+    &.finished {
+        background-color: green;
+    }
+    &.crashed {
+        background-color: red;
+    }
+}

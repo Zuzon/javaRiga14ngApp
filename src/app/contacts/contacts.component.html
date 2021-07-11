@@ -1,1 +1,11 @@
 <p>contacts works!</p>
+<button (click)="startParallel()">Start parallel</button>
+<button (click)="startOrdered()">Start ordered</button>
+<div class="work"
+[class.inprogress]="worker1Status == 1"
+[class.finished]="worker1Status == 2"
+[class.crashed]="worker1Status == 3">worker 1</div>
+<div class="work"
+[class.inprogress]="worker2Status == 1"
+[class.finished]="worker2Status == 2"
+[class.crashed]="worker2Status == 3">worker 2</div>
