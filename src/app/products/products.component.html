@@ -1,4 +1,8 @@
 <h2>{{pageTitle}}</h2>
 <div class="products">
-    <app-product-item [class.sale]="prece.discount > 0" [item]="prece" *ngFor="let prece of service.products"></app-product-item>
+    <app-product-item
+    [class.sale]="prece.discount > 0"
+    [item]="prece"
+    (onAdd)="onProductAddToCart($event)"
+    *ngFor="let prece of service.products"></app-product-item>
 </div>

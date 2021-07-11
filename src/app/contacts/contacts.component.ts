@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { exception } from 'console';
-import { Subscriber } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-contacts',
@@ -11,6 +10,8 @@ export class ContactsComponent implements OnInit {
 
   public worker1Status: number; // 0 - idle, 1 - progress, 2 - finished, 3 - crashed
   public worker2Status: number;
+  public worker3Status: number;
+  public worker3Progress: number;
   constructor() { }
 
   ngOnInit(): void {
@@ -46,11 +47,9 @@ export class ContactsComponent implements OnInit {
   public async startOrdered() {
     this.worker1Status = 0;
     this.worker2Status = 0;
-
-
     this.worker1Status = 1;
     try {
-      await this.longPromise(9);
+      await this.longPromise(4);
       this.worker1Status = 2;
     } catch (e) {
       this.worker1Status = 3;
@@ -60,6 +59,7 @@ export class ContactsComponent implements OnInit {
     await this.longPromise(2);
     this.worker2Status = 2;
   }
+
 
   public longCallbackMethod(timeSec, callback) {
     setTimeout( () => {
@@ -78,6 +78,34 @@ export class ContactsComponent implements OnInit {
         console.log('finished');
         resolve();
       }, timeSec * 1000);
+    });
+  }
+
+  public hardWork(amount) {
+    this.worker3Status = 1;
+    this.worker3Progress = 0;
+    this.hardWorkObservable(amount).subscribe({
+      next: (progress) => { this.worker3Progress = progress },
+      complete: () => { this.worker3Status = 2; },
+      error: () => { this.worker3Status = 3 }
+    });
+  }
+
+  public hardWorkObservable(amount) {
+    return new Observable<number>((observer) => {
+      let progress = 0;
+      let interval = setInterval(() => {
+        progress+=1;
+        observer.next(progress);
+        if (amount === progress) {
+          clearInterval(interval);
+          observer.complete();
+        }
+        if (progress > 20) {
+          clearInterval(interval);
+          observer.error();
+        }
+      }, 100);
     });
   }
 

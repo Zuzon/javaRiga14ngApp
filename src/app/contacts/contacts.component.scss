@@ -1,8 +1,10 @@
 .work {
+    display: inline-block;
     width: 200px;
     height: 200px;
     border: 1px solid black;
     margin: 30px;
+    vertical-align: top;
     &.inprogress {
         background-color: yellow;
     }
